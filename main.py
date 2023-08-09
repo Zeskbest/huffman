@@ -2,11 +2,11 @@ import huffman
 
 
 def main():
-    data = b"ajhhsg238oidjwnfdwpnjuidnwcdijwcipdhbwdhidciwspdcsoacdsoducbkshodbhokbk\b,diuwer823iqu4dsazfuwpc89249\n\00"
-    alphabet, encoded = huffman.encode(data)
-    data1 = huffman.decode(alphabet, encoded)
-    assert len(encoded) < len(data)
-    assert data == data1
+    data = b"ajhhsg238oidjwnfdwpnjnwcdijwcipdhbwdhidciwspdcsoacdsoducbkshodbhokbk\b,diuwer823iu4dsazfuwpc89249\n\00" * 9
+    encoded = huffman.encode(data).dumps()
+    data1 = huffman.decode(huffman.HEncoded.loads(encoded))
+    assert len(encoded) < len(data), f"{len(encoded)} < {len(data)}"
+    assert data == data1, f'{data} != {data1}'
 
 
 if __name__ == '__main__':
